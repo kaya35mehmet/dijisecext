@@ -2,9 +2,9 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>e412824b-51a7-493e-a877-2ea0a4ac5ab3</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Dijisec</ProviderName>
+  <ProviderName>E-Stamp</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="dijisecext"/>
+  <DisplayName DefaultValue="E-Stamp"/>
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
@@ -28,7 +28,7 @@
       </DesktopSettings>
     </Form>
   </FormSettings>
-    <Permissions>ReadWriteMailbox</Permissions>
+  <Permissions>ReadWriteMailbox</Permissions>
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
     <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit" />
@@ -44,7 +44,7 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="Commands.Url" />
+          <FunctionFile resid="Login.Url" />
           <ExtensionPoint xsi:type="MessageComposeCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgComposeGroup">
@@ -64,45 +64,32 @@
                     <SourceLocation resid="Taskpane.Url" />
                   </Action>
                 </Control>
-                <!-- Configure the prepend-on-send function command. -->
-                <!-- <Control xsi:type="Button" id="PrependButton">
-                  <Label resid="PrependButton.Label"/>
-                  <Supertip>
-                    <Title resid="PrependButton.Label"/>
-                    <Description resid="PrependButton.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>prependHeaderOnSend</FunctionName>
-                  </Action>
-                </Control> -->
-                <!-- Configure the append-on-send function command. -->
-                <!-- <Control xsi:type="Button" id="AppendButton">
-                  <Label resid="AppendButton.Label"/>
-                  <Supertip>
-                    <Title resid="AppendButton.Label"/>
-                    <Description resid="AppendButton.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>appendDisclaimerOnSend</FunctionName>
-                  </Action>
-                </Control> -->
               </Group>
             </OfficeTab>
           </ExtensionPoint>
-
-          <!-- Append-on-send and prepend-on-send (preview) are supported in Message Compose and Appointment Organizer modes. 
-          To support these features when creating a new appointment, configure the AppointmentOrganizerCommandSurface extension point. -->
-
+        
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="GroupLabel"/>
+                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Commands.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
     </Hosts>
@@ -113,24 +100,21 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Login.Url" DefaultValue="https://localhost:3000/login.html" />
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
-        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Stamp.Url" DefaultValue="https://localhost:3000/stamp.html" />
+        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/login.html" />
         <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/runtime.js" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Dijisec"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="İmzala"/>
-        <!-- <bt:String id="PrependButton.Label" DefaultValue="Prepend header on send"/>
-        <bt:String id="AppendButton.Label" DefaultValue="İmzala"/> -->
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
-        <!-- <bt:String id="PrependButton.Tooltip" DefaultValue="Prepend the Contoso header on send."/>
-        <bt:String id="AppendButton.Tooltip" DefaultValue="Append the Contoso disclaimer on send."/> -->
       </bt:LongStrings>
     </Resources>
-    <!-- Configures the prepend-on-send and append-on-send features. The same value, AppendOnSend, is used for both features. -->
     <ExtendedPermissions>
       <ExtendedPermission>AppendOnSend</ExtendedPermission>
     </ExtendedPermissions>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-Stamp</title>
+
+    <!-- Office JavaScript API -->
+    <!-- <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script> -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+    <script type="module" src="index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+      <img width="90" src="../../assets/estamp.png" alt="E-Stamp" title="E-Stamp" />
+    </header>
+    <!-- <script src="taskpane.js"></script> -->
+    <script src="qrcode.min.js"></script>
+    <script src="custom.js"></script>
+
+    <div class="form" style="margin-top: 20px">
+      <form id="signform">
+        <center><button type="button" style="border-radius: 2px;" onclick="generateQRCode()">Belgeyi imzala</button></center>
+        <!-- <center><button type="button" onclick="logout()"> çık</button></center> -->
+      </form>
+      <div id="qrcode-container">
+        <div id="qrcode" class="qrcode"></div>
+      </div>
+      <div id="qrcode1" class="qrcode"></div>
+    </div>
+    <div style="position:absolute;top:20px;right: 0; padding:10px;"><center><a onclick="logout()" style="background-color: #900005;padding: 6px; color: white;text-decoration: none; border-radius: 2px; cursor: pointer;">Çıkış yap</a></center></div>
+  </body>
+  <script type="module" src="index.js"></script>
+</html>
