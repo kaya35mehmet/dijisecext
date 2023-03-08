@@ -104,6 +104,7 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
         <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
         <bt:Url id="Stamp.Url" DefaultValue="https://localhost:3000/stamp.html" />
+        <bt:Url id="ForgotPassword.Url" DefaultValue="https://localhost:3000/forgotpassword.html" />
         <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/login.html" />
         <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/runtime.js" />
       </bt:Urls>

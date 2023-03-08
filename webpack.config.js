@@ -21,6 +21,7 @@ module.exports = async (env, options) => {
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
       stamp: ["./src/taskpane/taskpane.js", "./src/taskpane/stamp.html"],
       login: "./src/login/login.html",
+      forgotpassword: "./src/login/forgotpassword.html",
       commands: ["./src/commands/commands.js", "./src/commands/commands.html"],
     },
     output: {
@@ -89,6 +90,11 @@ module.exports = async (env, options) => {
         filename: "login.html",
         template: "./src/login/login.html",
         chunks: ["polyfill", "login"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "forgotpassword.html",
+        template: "./src/login/forgotpassword.html",
+        chunks: ["polyfill", "forgotpassword"],
       }),
       new HtmlWebpackPlugin({
         filename: "commands.html",

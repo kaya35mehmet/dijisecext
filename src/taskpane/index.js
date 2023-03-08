@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { getFirestore, setDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
 import {
   getAuth,
@@ -25,12 +25,30 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 function addmail(qrcode, sender, receiver, date) {
+  const user = auth.currentUser;
   setDoc(doc(db, "emails", qrcode), {
     qrcode: qrcode,
     sender: sender,
     receiver: receiver,
     isread: 0,
     date: date,
+    issecret: body != "" ? 1 : 0,
+    userid: user.uid,
+  });
+}
+
+function addsecuremail(qrcode, sender, receiver, date, body, receiverid) {
+  const user = auth.currentUser;
+  setDoc(doc(db, "secureemails", qrcode), {
+    qrcode: qrcode,
+    sender: sender,
+    receiver: receiver,
+    isread: 0,
+    date: date,
+    body: body,
+    issecret: body != "" ? 1 : 0,
+    userid: user.uid,
+    receiverid: receiverid,
   });
 }
 
@@ -42,6 +60,8 @@ function signin(email, password) {
       window.location = "taskpane.html";
     })
     .catch((error) => {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "block";
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const errorCode = error.code;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -64,12 +84,13 @@ function check() {
 function logout() {
   signOut(auth)
     .then(() => {
-    window.location = "login.html";
+      window.location = "login.html";
     })
     .catch((error) => {});
 }
 
 window.addmail = addmail;
+window.addsecuremail = addsecuremail;
 window.signin = signin;
 window.check = check;
 window.logout = logout;

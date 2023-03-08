@@ -15,26 +15,76 @@
       href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
     />
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/modal.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
       <img width="90" src="../../assets/estamp.png" alt="E-Stamp" title="E-Stamp" />
     </header>
-    <!-- <script src="taskpane.js"></script> -->
     <script src="qrcode.min.js"></script>
     <script src="custom.js"></script>
 
     <div class="form" style="margin-top: 20px">
       <form id="signform">
-        <center><button type="button" style="border-radius: 2px;" onclick="generateQRCode()">Belgeyi imzala</button></center>
-        <!-- <center><button type="button" onclick="logout()"> çık</button></center> -->
+        <div>
+          <input type="checkbox" name="secure" id="secure" onchange="setsecure()" />
+          <span>Güvenli gönder </span>
+        </div>
+        <div  id="divphonenumber" style="display: none;padding: 10px;">
+          <div style="padding: 0px 0 3px 0;"><label><b>Telefon numarası</b></label></div>
+          <input type="tel" id="phonenumber" style="padding: 10px;width: 90%;" />
+        </div>
+        <br />
+        <button type="button" style="border-radius: 2px; font-size: 16px; width: 100%" onclick="stampla()">
+          Postayı Mühürle
+        </button>
       </form>
       <div id="qrcode-container">
         <div id="qrcode" class="qrcode"></div>
       </div>
       <div id="qrcode1" class="qrcode"></div>
     </div>
-    <div style="position:absolute;top:20px;right: 0; padding:10px;"><center><a onclick="logout()" style="background-color: #900005;padding: 6px; color: white;text-decoration: none; border-radius: 2px; cursor: pointer;">Çıkış yap</a></center></div>
+    <div style="position: absolute; top: 20px; right: 0; padding: 10px">
+      <center>
+        <a
+          onclick="logout()"
+          style="
+            background-color: #900005;
+            padding: 6px;
+            color: white;
+            text-decoration: none;
+            border-radius: 2px;
+            cursor: pointer;
+          "
+          >Çıkış yap</a
+        >
+      </center>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span onclick="closemodal('myModal')" class="close">&times;</span>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+    <div id="myModal2" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span onclick="closemodal('myModal2')" class="close">&times;</span>
+        </div>
+        <div class="modal-body" style="min-height: 150px">
+          <h4>E-postanız mühürlenecek. Onaylıyor musunuz?</h4>
+          <button style="padding: 10px; background-color: green; color: aliceblue; border-radius: 2px; border: 0" onclick="generateQRCode()">
+            <b>Onayla</b>
+          </button>
+          <button style="padding: 10px; background-color: red; color: aliceblue; border-radius: 2px; border: 0" onclick="closemodal('myModal2')">
+            <b>İptal</b>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="module" src="index.js"></script>
+  <script src="../../assets/modal.js"></script>
 </html>

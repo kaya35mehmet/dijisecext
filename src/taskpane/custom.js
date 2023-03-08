@@ -8,13 +8,58 @@ function create_UUID() {
   return uuid;
 }
 
+function setsecure() {
+  var secure = document.getElementById("secure").checked;
+  if (secure) {
+    var touser = [];
+    var office = Office.context.mailbox;
+    office.item.to.getAsync(function (asyncResult) {
+      const msgTo = asyncResult.value;
+      for (let i = 0; i < msgTo.length; i++) {
+        touser.push(msgTo[i].emailAddress);
+      }
+    });
+
+    document.getElementById("divphonenumber").style.display = "block";
+  } else {
+    document.getElementById("divphonenumber").style.display = "none";
+  }
+}
+
+function stampla() {
+  var modal = document.getElementById("myModal2");
+  modal.style.display = "block";
+
+  // generateQRCode();
+}
+
 function generateQRCode() {
+  closemodal("myModal2");
+  var secure = document.getElementById("secure").checked;
   var office = Office.context.mailbox;
 
   office.item.to.getAsync(function (asyncResult) {
     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-      const msgTo = asyncResult.value;
+      let body = "";
       let website = create_UUID();
+      if (secure) {
+        website = "732873-" + website;
+        Office.onReady(() => {
+          isOfficeInitialized = true;
+        }).then(function () {
+          Office.context.mailbox.item.body.getAsync("html", async function (result) {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+              body = result.value;
+              Office.context.mailbox.item.body.setAsync(
+                "<center><img src='https://dijisec.com/assets/stamp.png' width='100'/><br> Lütfen içeriği görmek için E-Stamp eklentisini ya da mobil uygulamasını kullanın.</center><br/><center>E-Stamp eklentisinin kullanımı için lütfen <a src='https://dijisec.com' target='_blank'>https://dijisec.com</a> adresini ziyaret edin.</center>",
+                { coercionType: Office.CoercionType.Html }
+              );
+            }
+          });
+        });
+      }
+      const msgTo = asyncResult.value;
+
       let qrcodeContainer = document.getElementById("qrcode");
       qrcodeContainer.innerHTML = "";
 
@@ -30,20 +75,20 @@ function generateQRCode() {
       document.getElementById("qrcode-container").style.display = "block";
       const dd = document.getElementById("qrcode");
       var dataUrl = "";
-      var touser = "";
+      var touser = [];
       for (let i = 0; i < msgTo.length; i++) {
-        touser += msgTo[i].emailAddress + ",";
+        touser.push(msgTo[i].emailAddress);
       }
 
       if (touser != "") {
         setTimeout(function () {
           url = document.querySelector("#qrcode").querySelector("img").src;
           appendeText =
-            "<center> <img src='" +
-            url +
-            "' alt='"+website+"'> <br /> <stamp id='code'>" +
+            "<center> <stamp id='code'>" +
             website +
-            "</stamp> <br /> <br /> <p> <h3><b> Lütfen öncelikle e-postanın doğruluğunu kontrol edin. Daha önce okunmuş e-postalara güvenmeyin! </b></h3></p></center><br/><br/><br/><br/>";
+            "</stamp> <br /> <img src='" +
+            url +
+            "'/> <br /> <p> <h3><b> Lütfen öncelikle e-postanın doğruluğunu kontrol edin. Daha önce okunmuş e-postalara güvenmeyin! </b></h3></p></center><br/><br/><br/><br/>";
           var user = Office.context.mailbox.userProfile.emailAddress;
 
           Office.context.mailbox.item.body.prependAsync(
@@ -61,14 +106,22 @@ function generateQRCode() {
             }
           );
           var date = new Date();
-          addmail(website, user, touser, date);
+          var reveiverid = "";
+          if (secure) {
+            addsecuremail(website, user, touser, date, body, reveiverid);
+          } else {
+            addmail(website, user, touser, date, body);
+          }
           office.makeEwsRequestAsync(office.itemId, function (result) {
             const response = $.parseXML(result.value);
             const extendedProps = response.getElementsByTagName("ExtendedProperty");
           });
         }, 1000);
       } else {
-        document.getElementById("qrcode").innerHTML = "hedef ekleyin";
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        modal.getElementsByClassName("modal-body")[0].innerHTML = "<h3>Hedef ekleyin</h3>";
+        document.getElementById("qrcode").innerHTML = "";
       }
     } else {
       console.error(asyncResult.error);
