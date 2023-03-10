@@ -30,9 +30,10 @@
           <input type="checkbox" name="secure" id="secure" onchange="setsecure()" />
           <span>Güvenli gönder </span>
         </div>
-        <div  id="divphonenumber" style="display: none;padding: 10px;">
-          <div style="padding: 0px 0 3px 0;"><label><b>Telefon numarası</b></label></div>
-          <input type="tel" id="phonenumber" style="padding: 10px;width: 90%;" />
+        <div id="divphonenumber" style="display: none; padding: 10px">
+          <h5>SMS bildirimi için telefon numarası girin (Opsiyonel)</h5>
+          <div id="divphonenumber2"></div>
+          <button >Kaydet</button>
         </div>
         <br />
         <button type="button" style="border-radius: 2px; font-size: 16px; width: 100%" onclick="stampla()">
@@ -75,10 +76,16 @@
         </div>
         <div class="modal-body" style="min-height: 150px">
           <h4>E-postanız mühürlenecek. Onaylıyor musunuz?</h4>
-          <button style="padding: 10px; background-color: green; color: aliceblue; border-radius: 2px; border: 0" onclick="generateQRCode()">
+          <button
+            style="padding: 10px; background-color: green; color: aliceblue; border-radius: 2px; border: 0"
+            onclick="generateQRCode()"
+          >
             <b>Onayla</b>
           </button>
-          <button style="padding: 10px; background-color: red; color: aliceblue; border-radius: 2px; border: 0" onclick="closemodal('myModal2')">
+          <button
+            style="padding: 10px; background-color: red; color: aliceblue; border-radius: 2px; border: 0"
+            onclick="closemodal('myModal2')"
+          >
             <b>İptal</b>
           </button>
         </div>
@@ -87,4 +94,7 @@
   </body>
   <script type="module" src="index.js"></script>
   <script src="../../assets/modal.js"></script>
+  <script type="module">
+    checkstamp();
+  </script>
 </html>

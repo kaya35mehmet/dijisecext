@@ -16,13 +16,27 @@ function setsecure() {
     office.item.to.getAsync(function (asyncResult) {
       const msgTo = asyncResult.value;
       for (let i = 0; i < msgTo.length; i++) {
+        const para = document.createElement("div");
+        para.innerHTML =
+          " <label for='fname'>" +
+          msgTo[i].emailAddress +
+          "</label><input type='text' id='fname' name='firstname' placeholder='Telefon numarası girin'>";
+        document.getElementById("divphonenumber2").appendChild(para);
         touser.push(msgTo[i].emailAddress);
       }
-    });
 
-    document.getElementById("divphonenumber").style.display = "block";
+      if (touser.length > 0) {
+        document.getElementById("divphonenumber").style.display = "block";
+      } else {
+        document.getElementById("secure").checked = false;
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        modal.getElementsByClassName("modal-body")[0].innerHTML = "<h3>Hedef ekleyin</h3>";
+      }
+    });
   } else {
     document.getElementById("divphonenumber").style.display = "none";
+    document.getElementById("divphonenumber2").innerHTML = "";
   }
 }
 
@@ -106,11 +120,11 @@ function generateQRCode() {
             }
           );
           var date = new Date();
-          var reveiverid = "";
+          var receiverid = "";
           if (secure) {
-            addsecuremail(website, user, touser, date, body, reveiverid);
+            addsecuremail(website, user, touser, date, body, receiverid);
           } else {
-            addmail(website, user, touser, date, body);
+            addmail(website, user, touser, date);
           }
           office.makeEwsRequestAsync(office.itemId, function (result) {
             const response = $.parseXML(result.value);

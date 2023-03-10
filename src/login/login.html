@@ -38,15 +38,17 @@
         color: red;
       }
     </style>
-    <script>
-      function sign() {
-        let myUsername = document.getElementById("username");
-        let password = document.getElementById("password");
-        signin(username.value, password.value);
-      }
-    </script>
     <link href="../taskpane/taskpane.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/modal.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+    <script>
+      function sign() {
+        let myUsername = document.getElementById("username").innerText;
+        let password = document.getElementById("password");
+        console.log(username.value + " " + password.value);
+        signin(myUsername, password.value);
+      }
+    </script>
   </head>
   <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
@@ -55,9 +57,10 @@
     <div style="height: 20px"></div>
     <div class="container">
       <center><h1>Giriş yap</h1></center>
-      <label>E-posta adresi : </label>
-      <input type="text" placeholder="E-posta adresi" id="username" required />
-      <label>Şifre : </label>
+      <label><b>E-posta adresi : </b></label>
+      <p id="username"></p>
+      <!-- <input type="text" placeholder="E-posta adresi" id="username"/> -->
+      <label><b>Şifre : </b></label>
       <input type="password" placeholder="Şifre" id="password" required />
       <button onclick="sign()" style="padding: 10px">Giriş yap</button>
       <a href="forgotpassword.html">Şifremi unuttum</a>
@@ -74,5 +77,9 @@
     </div>
   </body>
   <script type="module" src="../taskpane/index.js"></script>
-  <script  src="../../assets/modal.js"></script>
+  <script src="../../assets/modal.js"></script>
+  <script type="text/javascript" src="login.js"></script>
+  <script>
+    username();
+  </script>
 </html>

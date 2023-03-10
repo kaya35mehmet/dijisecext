@@ -32,7 +32,6 @@ function addmail(qrcode, sender, receiver, date) {
     receiver: receiver,
     isread: 0,
     date: date,
-    issecret: body != "" ? 1 : 0,
     userid: user.uid,
   });
 }
@@ -81,6 +80,14 @@ function check() {
   });
 }
 
+function checkstamp() {
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location = "login.html";
+    }
+  });
+}
+
 function logout() {
   signOut(auth)
     .then(() => {
@@ -93,4 +100,6 @@ window.addmail = addmail;
 window.addsecuremail = addsecuremail;
 window.signin = signin;
 window.check = check;
+window.checkstamp = checkstamp;
 window.logout = logout;
+
