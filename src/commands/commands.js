@@ -1,5 +1,4 @@
 function checkid() {
- 
   Office.onReady(() => {
     isOfficeInitialized = true;
   }).then(function () {

@@ -1,0 +1,133 @@
+[debug] [2023-03-16T10:53:34.492Z] ----------------------------------------------------------------------
+[debug] [2023-03-16T10:53:34.493Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-03-16T10:53:34.493Z] CLI Version:   11.24.1
+[debug] [2023-03-16T10:53:34.493Z] Platform:      darwin
+[debug] [2023-03-16T10:53:34.493Z] Node Version:  v16.13.0
+[debug] [2023-03-16T10:53:34.494Z] Time:          Thu Mar 16 2023 13:53:34 GMT+0300 (GMT+03:00)
+[debug] [2023-03-16T10:53:34.494Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-16T10:53:34.527Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-16T10:53:34.527Z] > authorizing via signed-in user (dijisec.com@gmail.com)
+[debug] [2023-03-16T10:53:34.527Z] [iam] checking project estamppro for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-16T10:53:34.528Z] > refreshing access token with scopes: []
+[debug] [2023-03-16T10:53:34.528Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-03-16T10:53:34.528Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-16T10:53:34.755Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-03-16T10:53:34.755Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-16T10:53:34.797Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions [none]
+[debug] [2023-03-16T10:53:34.797Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions x-goog-quota-user=projects/estamppro
+[debug] [2023-03-16T10:53:34.797Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-16T10:53:35.815Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions 200
+[debug] [2023-03-16T10:53:35.815Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {}
+[debug] [2023-03-16T10:53:35.815Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project estamppro:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-03-16T10:53:35.815Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/estamppro [none]
+[debug] [2023-03-16T10:53:36.163Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/estamppro 403
+[debug] [2023-03-16T10:53:36.164Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/estamppro {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-16T10:53:36.166Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-16T10:53:36.365Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project estamppro. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-03-18T00:45:04.355Z] ----------------------------------------------------------------------
+[debug] [2023-03-18T00:45:04.356Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-03-18T00:45:04.356Z] CLI Version:   11.24.1
+[debug] [2023-03-18T00:45:04.356Z] Platform:      darwin
+[debug] [2023-03-18T00:45:04.357Z] Node Version:  v16.13.0
+[debug] [2023-03-18T00:45:04.357Z] Time:          Sat Mar 18 2023 03:45:04 GMT+0300 (GMT+03:00)
+[debug] [2023-03-18T00:45:04.357Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-18T00:45:04.390Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-18T00:45:04.390Z] > authorizing via signed-in user (dijisec.com@gmail.com)
+[debug] [2023-03-18T00:45:04.390Z] [iam] checking project estamppro for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-18T00:45:04.391Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions [none]
+[debug] [2023-03-18T00:45:04.391Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions x-goog-quota-user=projects/estamppro
+[debug] [2023-03-18T00:45:04.391Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-18T00:45:05.555Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions 200
+[debug] [2023-03-18T00:45:05.555Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {}
+[debug] [2023-03-18T00:45:05.556Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project estamppro:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-03-18T00:45:05.557Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/estamppro [none]
+[debug] [2023-03-18T00:45:06.158Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/estamppro 403
+[debug] [2023-03-18T00:45:06.158Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/estamppro {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-18T00:45:06.159Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-18T00:45:06.323Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project estamppro. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-03-18T00:45:36.033Z] ----------------------------------------------------------------------
+[debug] [2023-03-18T00:45:36.033Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-03-18T00:45:36.034Z] CLI Version:   11.24.1
+[debug] [2023-03-18T00:45:36.034Z] Platform:      darwin
+[debug] [2023-03-18T00:45:36.034Z] Node Version:  v16.13.0
+[debug] [2023-03-18T00:45:36.035Z] Time:          Sat Mar 18 2023 03:45:36 GMT+0300 (GMT+03:00)
+[debug] [2023-03-18T00:45:36.035Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-18T00:45:36.067Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-18T00:45:36.067Z] > authorizing via signed-in user (dijisec.com@gmail.com)
+[debug] [2023-03-18T00:45:36.067Z] [iam] checking project estamppro for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-18T00:45:36.068Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions [none]
+[debug] [2023-03-18T00:45:36.069Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions x-goog-quota-user=projects/estamppro
+[debug] [2023-03-18T00:45:36.069Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-18T00:45:37.089Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions 200
+[debug] [2023-03-18T00:45:37.090Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {}
+[debug] [2023-03-18T00:45:37.090Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project estamppro:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-03-18T00:45:37.091Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/estamppro [none]
+[debug] [2023-03-18T00:45:37.464Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/estamppro 403
+[debug] [2023-03-18T00:45:37.464Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/estamppro {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-18T00:45:37.465Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-18T00:45:37.641Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project estamppro. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-03-19T06:33:37.926Z] ----------------------------------------------------------------------
+[debug] [2023-03-19T06:33:37.926Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-03-19T06:33:37.927Z] CLI Version:   11.24.1
+[debug] [2023-03-19T06:33:37.927Z] Platform:      darwin
+[debug] [2023-03-19T06:33:37.927Z] Node Version:  v16.13.0
+[debug] [2023-03-19T06:33:37.927Z] Time:          Sun Mar 19 2023 09:33:37 GMT+0300 (GMT+03:00)
+[debug] [2023-03-19T06:33:37.928Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-19T06:33:37.929Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-19T06:33:37.969Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-19T06:33:37.970Z] > authorizing via signed-in user (dijisec.com@gmail.com)
+[debug] [2023-03-19T06:33:37.970Z] [iam] checking project estamppro for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-19T06:33:37.970Z] > refreshing access token with scopes: []
+[debug] [2023-03-19T06:33:37.970Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-03-19T06:33:37.970Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-19T06:33:38.251Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-03-19T06:33:38.251Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-19T06:33:38.294Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions [none]
+[debug] [2023-03-19T06:33:38.294Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions x-goog-quota-user=projects/estamppro
+[debug] [2023-03-19T06:33:38.294Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-19T06:33:38.467Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-03-19T06:33:38.467Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-03-19T06:33:39.365Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions 200
+[debug] [2023-03-19T06:33:39.365Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estamppro:testIamPermissions {}
+[debug] [2023-03-19T06:33:39.366Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project estamppro:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-03-19T06:33:39.368Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/estamppro [none]
+[debug] [2023-03-19T06:33:39.790Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/estamppro 403
+[debug] [2023-03-19T06:33:39.790Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/estamppro {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-19T06:33:39.792Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-19T06:33:39.953Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project estamppro. Please make sure the project exists and your account has permission to access it.

@@ -65,7 +65,13 @@
             <td id="date"></td>
           </tr>
         </table>
-        <div id="body"></div>
+
+        <div>
+          <h3>İçerik</h3>
+           <div id="body">
+          
+        </div>
+        </div>
       </div>
     </div>
     <center id="divnotreceive" style="display: none">
@@ -94,9 +100,10 @@
 
   <script type="module" src="index.js"></script>
   <script>
-    
+  
     checkid();
-    setTimeout(function () {
+    setTimeout(function () { 
+      getall();
       var code = document.getElementById("code").innerText.trim();
       var username = document.getElementById("username").value.trim();
       getdatabyid(code, username);

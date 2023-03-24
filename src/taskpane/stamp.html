@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>E-Stamp</title>
-
-    <!-- Office JavaScript API -->
-    <!-- <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script> -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
     <script type="module" src="index.js"></script>
     <link
@@ -16,6 +13,7 @@
     />
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/modal.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
   <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
@@ -25,25 +23,28 @@
     <script src="custom.js"></script>
 
     <div class="form" style="margin-top: 20px">
-      <form id="signform">
-        <div>
-          <input type="checkbox" name="secure" id="secure" onchange="setsecure()" />
-          <span>Güvenli gönder </span>
-        </div>
-        <div id="divphonenumber" style="display: none; padding: 10px">
-          <h5>SMS bildirimi için telefon numarası girin (Opsiyonel)</h5>
-          <div id="divphonenumber2"></div>
-          <button >Kaydet</button>
-        </div>
-        <br />
-        <button type="button" style="border-radius: 2px; font-size: 16px; width: 100%" onclick="stampla()">
-          Postayı Mühürle
-        </button>
-      </form>
+      <!-- <form id="signform">    </form> -->
+      <div id="btnmuhurle">
+        <input type="checkbox" name="secure" id="secure" onchange="setsecure()" />
+        <span>Güvenli gönder </span>
+     
+      <div id="divphonenumber" style="display: none; padding: 10px">
+        <h5>SMS bildirimi için telefon numarası girin</h5>
+        <div id="divphonenumber2"></div>
+        <button onclick="save()">Kaydet</button>
+      </div>
+      <br />
+      <button type="button" style="border-radius: 2px; font-size: 16px; width: 100%" onclick="stampla()">
+        Postayı Mühürle
+      </button>
+ </div>
       <div id="qrcode-container">
         <div id="qrcode" class="qrcode"></div>
       </div>
       <div id="qrcode1" class="qrcode"></div>
+      <div id="qrdescription" >
+
+      </div>
     </div>
     <div style="position: absolute; top: 20px; right: 0; padding: 10px">
       <center>
@@ -84,8 +85,7 @@
           </button>
           <button
             style="padding: 10px; background-color: red; color: aliceblue; border-radius: 2px; border: 0"
-            onclick="closemodal('myModal2')"
-          >
+            onclick="closemodal('myModal2')">
             <b>İptal</b>
           </button>
         </div>

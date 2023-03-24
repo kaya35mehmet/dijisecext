@@ -7,21 +7,31 @@ function create_UUID() {
   });
   return uuid;
 }
-
+var touser = [];
 function setsecure() {
   var secure = document.getElementById("secure").checked;
   if (secure) {
-    var touser = [];
     var office = Office.context.mailbox;
     office.item.to.getAsync(function (asyncResult) {
       const msgTo = asyncResult.value;
       for (let i = 0; i < msgTo.length; i++) {
-        const para = document.createElement("div");
-        para.innerHTML =
-          " <label for='fname'>" +
-          msgTo[i].emailAddress +
-          "</label><input type='text' id='fname' name='firstname' placeholder='Telefon numarası girin'>";
-        document.getElementById("divphonenumber2").appendChild(para);
+        var phone = getuser(msgTo[i].emailAddress);
+
+        // const para = document.createElement("div");
+        // if (phone != 0) {
+        //   para.innerHTML =
+        //     " <label for='fname'>" +
+        //     msgTo[i].emailAddress +
+        //     "</label><input type='text' id='fname' name='firstname' value='" +
+        //     phone +
+        //     "' placeholder='Telefon numarası girin'>";
+        // } else {
+        //   para.innerHTML =
+        //     " <label for='fname'>" +
+        //     msgTo[i].emailAddress +
+        //     "</label><input type='text' id='fname' name='firstname' value='' placeholder='Telefon numarası girin'>";
+        // }
+
         touser.push(msgTo[i].emailAddress);
       }
 
